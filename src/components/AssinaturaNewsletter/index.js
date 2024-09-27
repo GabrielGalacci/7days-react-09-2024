@@ -1,11 +1,11 @@
-import formStyles from './form.module.css';
-import styles from './index.module.css';
+
+import { AssinaturaNewsLetter, Container, FieldGroup, Form, Text } from './styles';
 
 export default function AssinaturaNewsletter() {
     return (
-        <div className={styles.assinaturaNewsletter}>
-            <div className={styles.assinaturaNewsletter__container}>
-                <div className={styles.assinaturaNewsletter__container__text}>
+        <AssinaturaNewsLetter>
+            <Container>
+                <Text>
                     <h1>
                         Sua casa com as
                         <br />
@@ -16,17 +16,17 @@ export default function AssinaturaNewsletter() {
                     <p>
                         Encontre aqui uma vasta seleção de plantas para decorar a sua casa e torná-lo uma pessoa mais feliz no seu dia a dia. Entre com seu e-mail e assine nossa newsletter para saber das novidades da marca.
                     </p>
-                </div>
+                </Text>
 
-                <form className={formStyles.form} action="/">
-                    <div className={formStyles.fieldGroup}>
+                <Form action="#">
+                    <FieldGroup>
                         <input type="email" placeholder='Insira seu E-mail' />
                         <button>
                             Assinar Newsletter
                         </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+                    </FieldGroup>
+                </Form>
+            </Container>
+        </AssinaturaNewsLetter>
     );
 }
