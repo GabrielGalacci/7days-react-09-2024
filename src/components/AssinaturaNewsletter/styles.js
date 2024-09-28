@@ -77,6 +77,12 @@ export const Form = styled.form`
         padding: 27px;
         padding-left: 55px;
     }
+    p {
+        margin-top: 10px;
+        padding: 10px;
+        background-color: bisque;
+        border: 1px solid #f00;
+    }
 `;
 
 export const FieldGroup = styled.fieldset`

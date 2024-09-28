@@ -1,7 +1,28 @@
-
+import { useState } from 'react';
 import { AssinaturaNewsLetter, Container, FieldGroup, Form, Text } from './styles';
 
+
 export default function AssinaturaNewsletter() {
+    const [response, setResponse] = useState('');
+    const [email, setEmail] = useState('');
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  
+    const handleEmailChange = (event) => {
+      const enteredEmail = event.target.value;
+      setEmail(enteredEmail);
+  
+      // Basic email validation using a regular expression
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      setIsButtonDisabled(!emailRegex.test(enteredEmail));
+    };
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      // Perform form submission logic here
+      setResponse("Obrigado pela sua assinatura, você receberá nossas novidades no e-mail " + email)
+      alert('Obrigado pela sua assinatura, você receberá nossas novidades no e-mail ' + email);
+    };
+
     return (
         <AssinaturaNewsLetter>
             <Container>
@@ -18,13 +39,19 @@ export default function AssinaturaNewsletter() {
                     </p>
                 </Text>
 
-                <Form action="#">
+                <Form action="#" onSubmit={handleSubmit}>
                     <FieldGroup>
-                        <input type="email" placeholder='Insira seu E-mail' />
-                        <button>
-                            Assinar Newsletter
+                        <input
+                        type="email"
+                        placeholder="Insira seu E-mail"
+                        value={email}
+                        onChange={handleEmailChange}
+                        />
+                        <button type="submit" disabled={isButtonDisabled}>
+                        Assinar Newsletter
                         </button>
                     </FieldGroup>
+                    <p>{response}</p>
                 </Form>
             </Container>
         </AssinaturaNewsLetter>
